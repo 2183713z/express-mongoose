@@ -50,6 +50,7 @@ export default class PostList extends Component {
     return(
       <div>
         { postList }
+
       </div>
     );
   }
