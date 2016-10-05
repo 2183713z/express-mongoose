@@ -3,19 +3,32 @@ import axios from 'axios';
 
 
 class ShowPost extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      data:{}
+    }
+  }
   componentDidMount() {
     //  Promise
     let id=this.props.params.id;
     let address=`http://localhost:3000/post/${id}`;
     axios.get(address).then(res => {
-      console.log(res.data);
-      console.log(this.props);
+      this.setState({
+        data:res.data.post
+      })
+      // console.log(res.data);
+      console.log(this.state.data);
+      // console.log(this.props);
     });
   }
   render () {
     return (
       <div>
-        {this.props.params.id}
+
+        {this.state.data.title}<br/>
+        {this.state.data.category}<br/>
+        {this.state.data.content}
       </div>
     )
   }

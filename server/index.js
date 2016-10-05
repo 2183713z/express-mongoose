@@ -50,7 +50,12 @@ app.get('/posts',function(req,res){
 //curl -H "Content-Type: application/json" -X GET  -d '{"title":"xiaoyin","content":"myContent"}' http://localhost:3000/post/xxx
 //模拟get
 app.get('/post/:id',function(req,res){
-  res.send(req.params.id)
+  // res.send(req.params.id)
+  Post.findOne({_id:req.params.id},function(err,doc){//find 找到数组 findOne找到对象
+    // res.send(doc)
+    if(err) return res.send('出错了!')
+    res.json({post:doc})
+  })
 })
 
 app.get('/',function(req,res){
