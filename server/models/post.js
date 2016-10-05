@@ -2,7 +2,12 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var PostSchema=new Schema(
   {
-    title:String
+    title:String,
+    category:String,
+    content:String,
+  },
+  {
+    timestamps:true
   }
 )
 

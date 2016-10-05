@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import {Link} from 'react-router';
 import Radium from 'radium';
-import axios from 'axios';
+
 
 class Form extends Component {
   getStyles() {
@@ -68,11 +68,7 @@ class Form extends Component {
       alert('内容不能为空');
       return ;
     }
-    axios.post('http://localhost:3000/posts',{title:title})
-    .then( res => {
-      console.log(res.data.message);
-      this.context.router.push('/');
-    })
+    this.props.newPost(title);
   }
   render() {
     const styles = this.getStyles();
@@ -82,6 +78,14 @@ class Form extends Component {
           <label style={styles.label}>标题</label>
           <input style={styles.input} key='1' ref='title'/>
         </div>
+        <div style={styles.div}>
+          <label style={styles.label}>类别</label>
+          <input style={styles.input} key='2' ref='category'/>
+        </div>
+        <div style={styles.div}>
+          <label style={styles.label}>内容</label>
+          <textarea style={styles.input} key='3' ref='content'/>
+        </div>
         <div style={styles.actions}>
           <button type='submit' style={styles.button}>Submit</button>
           <Link to='/' style={styles.link}>取消</Link>
@@ -90,7 +94,5 @@ class Form extends Component {
     );
   }
 }
-Form.contextTypes={
-  router:React.PropTypes.object.isRequired
-}
+
 export default Radium(Form);
