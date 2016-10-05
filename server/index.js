@@ -46,6 +46,13 @@ app.get('/posts',function(req,res){
   })
   console.log('GET /posts');
 })
+//后台的动态路由 在命令行通过
+//curl -H "Content-Type: application/json" -X GET  -d '{"title":"xiaoyin","content":"myContent"}' http://localhost:3000/post/xxx
+//模拟get
+app.get('/post/:id',function(req,res){
+  res.send(req.params.id)
+})
+
 app.get('/',function(req,res){
       res.redirect('http://baidu.com');
   console.log('GET /');
