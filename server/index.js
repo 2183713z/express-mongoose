@@ -25,7 +25,11 @@ app.get('/write',function(req,res){
 })
 //发布一篇文章
 app.post('/posts',function(req,res){
-  var post=new Post ({title:req.body.title});
+  let reqC=req.body;
+  var post=new Post ({title:reqC.title,category:reqC.category,content:reqC.content});
+  // for (var item in req.body){
+  //   post[item]=req.body[item]
+  // }
   post.save(function(err){
     if(err) return console.log(err);
     console.log('saved!');

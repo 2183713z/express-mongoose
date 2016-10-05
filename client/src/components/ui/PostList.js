@@ -56,7 +56,7 @@ export default class PostList extends Component {
     const postList = map((post) => {
       return (
         <div style={styles.content} key={post._id}>
-          <div style={styles.title}>{post.title}</div>
+          <div style={styles.title}>{post.title} {post.category} {post.content}</div>
         </div>
       )
     }, this.state.posts);
