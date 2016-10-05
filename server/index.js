@@ -27,11 +27,12 @@ app.get('/write',function(req,res){
 app.post('/posts',function(req,res){
   var post=new Post ({title:req.body.title});
   post.save(function(err){
-    if(err) console.log(err);
+    if(err) return console.log(err);
     console.log('saved!');
   });
-  console.log('POST /posts');
-  res.redirect('/posts')
+  // console.log('POST /posts');
+  // res.redirect('/posts')
+  res.json({message:'保存成功'})
 })
 app.get('/posts',function(req,res){
   // res.send('<h1>All My Blog</h1>')
