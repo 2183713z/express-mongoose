@@ -25,11 +25,12 @@ app.get('/write',function(req,res){
 })
 //发布一篇文章
 app.post('/posts',function(req,res){
-  let reqC=req.body;
-  var post=new Post ({title:reqC.title,category:reqC.category,content:reqC.content});
-  // for (var item in req.body){
-  //   post[item]=req.body[item]
-  // }
+  console.log(req.body);
+  var post=new Post ({
+    title:req.body.title,
+    category:req.body.category,
+    content:req.body.content
+  });
   post.save(function(err){
     if(err) return console.log(err);
     console.log('saved!');
@@ -51,7 +52,7 @@ app.get('/posts',function(req,res){
 //模拟get
 app.get('/post/:id',function(req,res){
   // res.send(req.params.id)
-  Post.findOne({_id:req.params.id},function(err,doc){//find 找到数组 findOne找到对象
+  Post.findById({_id:req.params.id},function(err,doc){//find 找到数组 findOne找到对象
     // res.send(doc)
     if(err) return res.send('出错了!')
     res.json({post:doc})

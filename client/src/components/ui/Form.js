@@ -62,7 +62,7 @@ class Form extends Component {
     };
   }
   handleSubmit(e){
-    e.preventDefault();
+    e.preventDefault();//阻止默认行为，即阻止页面刷新refresh is not for SPA
     let title=this.refs.title.value;
     let category=this.refs.category.value;
     let content=this.refs.content.value;

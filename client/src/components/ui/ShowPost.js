@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 import axios from 'axios';
 
-
 class ShowPost extends React.Component {
   constructor(){
     super();
     this.state={
-      data:{}
+      data:{},
+      wait:true
     }
   }
   componentDidMount() {
@@ -15,7 +15,8 @@ class ShowPost extends React.Component {
     let address=`http://localhost:3000/post/${id}`;
     axios.get(address).then(res => {
       this.setState({
-        data:res.data.post
+        data:res.data.post,
+        wait:false
       })
       // console.log(res.data);
       console.log(this.state.data);
@@ -25,10 +26,9 @@ class ShowPost extends React.Component {
   render () {
     return (
       <div>
-
-        {this.state.data.title}<br/>
-        {this.state.data.category}<br/>
-        {this.state.data.content}
+        类别： { this.state.wait? '请稍等' : this.state.data.category } <br />
+        标题： { this.state.wait? '请稍等' : this.state.data.title } <br />
+        内容： { this.state.wait? '请稍等' : this.state.data.content }
       </div>
     )
   }

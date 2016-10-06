@@ -7,7 +7,7 @@ var PostSchema=new Schema(
     content:String,
   },
   {
-    timestamps:true
+    timestamps:true //时间戳，显示创建时间createdAt和更新时间updatedAt
   }
 )
 
