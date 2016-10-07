@@ -121,8 +121,27 @@ var PostSchema=new Schema({
   content:String
 })
 ```
+上面代码，规定出了我们的记录能够保存哪些数据
+
 ### 创建数据模型model
+数据库的结构就是，一个数据库，里面会包含多个集合，一个集合会包含多条数据记录。
+那么现在，我们的数据要往哪个数据库中存储？这个问题以及通过前面的`mongoose.connect(xxx)`的语句指定了。
+但是数据库要保存到哪个集合还没有指定。所有我们的model创建语句如下：
+```
+var Post=mongoose.model('Post',PostSchema)
+```
+上面 `.model()`的第一个参数, `Post`就为我们指定了集合的名字，会对应数据库中的posts这个集合，第二个参数就是数据schema，就是前面我们定义的。
+到这里，所有数据存储的基础设施全部就绪。
 ### 实例化model得到数据对象
+现在我们要把实际存储的数据，放到一个model的实例（对象）之中了。
+```
+ var post = new Post({title:"myTitle", content: "myConent"})
+```
 ### 对象之上呼叫save()
 
 这样可以把保存到数据库中
+```
+post.save(function(){
+   console.log('saved!')
+  })
+```

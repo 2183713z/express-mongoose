@@ -12,7 +12,10 @@ db.once('open',function(){
   var cat=mongoose.model('Cat',catSchema);
   var mimi=new cat({name:'huahua'});
   console.log(mimi.name);
-  mimi.save()
+  mimi.save(function(){
+    if(err) return console.log(err)
+    
+  })
 })
 
 app.post('/posts', function(req, res){  console.log('hello');
