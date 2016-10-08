@@ -1,5 +1,5 @@
 # Mongodb 数据库操作
-!['我自己'](images/1.jpg)
+!['我自己'](images/big.jpg)
 ### 启动Mongodb
 ```
 mkdir -p data/db
@@ -29,7 +29,7 @@ $ db.posts.insert({title:'myTitle',content:'myContent'})
 ```
  $ db.posts.find()
 ```
-#### hello Ada
+#### Hello Ada
 ![](https://raw.githubusercontent.com/2183713z/express-mongoose/0339755a94e46e1e88165f7492de6e760dd779eb/doc/images/001-ada.png)
 ### 修改一条记录(了解内容)
 ```
