@@ -1,5 +1,5 @@
 # Mongodb 数据库操作
-!['我自己'](images/big.jpg)
+!['我自己'](images/small.jpg)
 ### 启动Mongodb
 ```
 mkdir -p data/db
