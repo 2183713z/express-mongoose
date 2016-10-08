@@ -1,5 +1,5 @@
 # Mongodb 数据库操作
-!['我自己'](images/small.jpg)
+!['我自己'](https://github.com/2183713z/express-mongoose/raw/master/doc/images/small.jpg)
 ### 启动Mongodb
 ```
 mkdir -p data/db
@@ -80,7 +80,7 @@ curl --request POST localhost:3000/posts
 ```
 如果可以在运行 `node index.js` 的位置看到 `hello` 表示我们这一步胜利完成。
 
-  ![](images/003-curl.png)
+  ![](https://github.com/2183713z/express-mongoose/raw/master/doc/images/003-curl.png)
 ### 安装mongoose
 作为一个npm包进行安装[link](https://www.npmjs.com/package/mongoose)
 ```
