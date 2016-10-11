@@ -21,10 +21,16 @@ import isEmpty from 'lodash/fp/isEmpty';
        console.log(res);
      })
    }
+   publishPost(data){
+     var id=this.props.params.id;
+     axios.put(`${Settings.host}/posts/${id}`).then( res => {
+       console.log(res.data);
+     })
+   }
    render(){
      return(
        <div>
-          {!isEmpty(this.state.post)  ?  <EditForm post={this.state.post}/> : ''}
+          {!isEmpty(this.state.post)  ?  <EditForm post={this.state.post} publishPost={this.publishPost.bind(this)}/> : ''}
        </div>
      )
    }
