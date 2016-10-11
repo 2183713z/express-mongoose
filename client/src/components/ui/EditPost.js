@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Settings from '../../settings'
+import EditForm from './EditForm';
+import isEmpty from 'lodash/fp/isEmpty';
 
  export default class EditPost extends Component {
    constructor(){
@@ -22,8 +24,7 @@ import Settings from '../../settings'
    render(){
      return(
        <div>
-          "hello"
-          {JSON.stringify(this.state.post)}
+          {!isEmpty(this.state.post)  ?  <EditForm post={this.state.post}/> : ''}
        </div>
      )
    }
