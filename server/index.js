@@ -14,7 +14,7 @@ db.once('open', function() {
  //关闭同源策略，开放cors
 var cors=require('cors');
 app.use(cors());
-var Post =require('./models/post')
+var Post    =require('./models/post')
 app.get('/write',function(req,res){
   var page="<form method='post' action='/posts'>"+
             "<input type='text' name='title'/>"+
@@ -59,10 +59,13 @@ app.get('/post/:id',function(req,res){
   })
 })
 
-app.get('/',function(req,res){
-      res.redirect('http://baidu.com');
-  console.log('GET /');
-})
+// app.get('/',function(req,res){
+//       res.redirect('http://baidu.com');
+//   console.log('GET /');
+// })
+app.get('/', function(req, res) {
+   res.send("this is api server");
+ })
 app.get('/posts/:id',function(req,res){
   console.log('GET /posts/:id');
 })
