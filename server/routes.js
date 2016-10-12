@@ -17,10 +17,33 @@ module.exports = function(app) {
       res.json({post: doc})
     })
   })
-  app.put('/posts/:id',function(req,res){
-    console.log(req.params.id);
-    res.json({peter:'Hi,everyone!'})
+
+  app.delete('/posts/:id', function(req,res) {
+    Post.findById({_id: req.params.id}, function(err, post) {
+      console.log(post);
+      post.remove(function(){
+        res.json({
+          message:'文章删除成功了！'
+        })
+      })
+    })
   })
+  app.put('/posts/:id', function(req, res) {
+    if (req.body.title === '') return res.status(400).json({error: '文章标题不能为空！'});
+    Post.findById({_id: req.params.id}, function(err, post) {
+      if (err) return res.status(500).json({error:  err.message});
+      for (prop in req.body) {
+        console.log(prop);//后台打印出title  category   content
+        post[prop] = req.body[prop];
+      }
+      post.save(function(err) {
+        if (err) return res.status(500).json({error: err.message});
+        res.json({
+          message: '文章更新成功了！'
+        });
+      });
+    });
+  });
   app.post('/posts', function(req, res) {
     // res.send('the post title is: ' + req.body.title)
     console.log(req.body);
