@@ -64,21 +64,22 @@ export default class PostList extends Component {
       this.setState({
         posts: res.data.posts
       });
-      // console.log(this.state.posts);
+      console.log(this.state.posts);
     });
   }
   filterPosts(id) {
-     const posts = filter((post) => {
+     var newPosts = filter((post) => {
        return post._id !== id
      }, this.state.posts);
 
-     this.setState({ posts: posts })
+     this.setState({ posts: newPosts })
    }
   handleClick(value){
     axios.delete(`${Settings.host}/posts/${value}`).then( res=>{
       // console.log('deleted!');
       //筛除已经删除的这个 post
       // console.log(res);
+      //修改this.state.posts里面删除一个Post
       console.log('filering..!');
       this.filterPosts(value);
     })
